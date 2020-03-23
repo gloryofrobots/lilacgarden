@@ -20,7 +20,7 @@
 
   <Menu name="help" append="about_merge">
     <text>&amp;Help</text>
-    <Action name="bank_help" text="&amp;Help" icon="wiki" shortcut="F1" />
+    <Action name="bank_help" text="&amp;Help" icon="wiki" shortcut="Ctrl+F1" />
   <Separator/>
     <Action name="help_about_app" text="&amp;About Rosegarden" icon="rg-rwb-rose3-16x16" />
   </Menu>
