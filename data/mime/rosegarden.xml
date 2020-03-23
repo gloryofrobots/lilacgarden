@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-rosegarden-composition">
+    <sub-class-of type="application/x-gzip"/>
+    <comment>Rosegarden composition</comment>
+    <comment xml:lang="en">Rosegarden composition</comment>
+    <comment xml:lang="es">Composición de Rosegarden</comment>
+    <comment xml:lang="fr">Composition musicale Rosegarden</comment>
+    <glob pattern="*.rg"/>
+  </mime-type>
+  <mime-type type="application/x-rosegarden-device">
+    <sub-class-of type="application/x-gzip"/>
+    <comment>Rosegarden MIDI device definition</comment>
+    <comment xml:lang="en">Rosegarden MIDI device definition</comment>
+    <comment xml:lang="es">Definición de dispositivo MIDI de Rosegarden</comment>
+    <comment xml:lang="fr">Description de peripherique MIDI pour Rosegarden</comment>
+    <glob pattern="*.rgd"/>
+  </mime-type>
+  <mime-type type="application/x-rosegarden-project">
+    <sub-class-of type="application/x-gzip"/>
+    <comment>Rosegarden project</comment>
+    <comment xml:lang="en">Rosegarden project</comment>
+    <comment xml:lang="es">Proyecto de Rosegarden</comment>
+    <comment xml:lang="fr">Projet Rosegarden</comment>
+    <glob pattern="*.rgp"/>
+  </mime-type>
+  <mime-type type="application/x-rosegarden-template">
+    <sub-class-of type="application/x-gzip"/>
+    <comment>Rosegarden template</comment>
+    <comment xml:lang="en">Rosegarden template</comment>
+    <comment xml:lang="es">Plantilla de Rosegarden</comment>
+    <comment xml:lang="fr">Modèle de composition Rosegarden</comment>
+    <glob pattern="*.rgt"/>
+  </mime-type>
+</mime-info>
