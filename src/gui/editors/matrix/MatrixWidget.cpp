@@ -31,6 +31,7 @@
 #include "MatrixMouseEvent.h"
 #include "MatrixViewSegment.h"
 #include "PianoKeyboard.h"
+#include "misc/ConfigGroups.h"
 
 #include "document/RosegardenDocument.h"
 
@@ -80,7 +81,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsProxyWidget>
 #include <QPushButton>
-
+#include <QSettings>
 
 namespace Rosegarden
 {
@@ -382,21 +383,30 @@ MatrixWidget::setSegments(RosegardenDocument *document,
     Track *track;
     Instrument *instr;
 
-    // Look at segments to see if we need piano keyboard or key mapping ruler
-    // (cf comment in MatrixScene::setSegments())
-    m_onlyKeyMapping = true;
-    std::vector<Segment *>::iterator si;
-    for (si=segments.begin(); si!=segments.end(); ++si) {
-        track = comp.getTrackById((*si)->getTrack());
-        instr = document->getStudio().getInstrumentById(track->getInstrument());
-        if (instr) {
-            if (!instr->getKeyMapping()) {
-                m_onlyKeyMapping = false;
+    QSettings settings;
+    settings.beginGroup(MatrixViewConfigGroup);
+    bool forceKeyMapping = settings.value("force_key_mapping", false).toBool();
+    settings.endGroup();
+
+    if (forceKeyMapping == true) {
+        m_onlyKeyMapping = true;
+    } else {
+        // Look at segments to see if we need piano keyboard or key mapping ruler
+        // (cf comment in MatrixScene::setSegments())
+        m_onlyKeyMapping = true;
+        std::vector<Segment *>::iterator si;
+        for (si=segments.begin(); si!=segments.end(); ++si) {
+            track = comp.getTrackById((*si)->getTrack());
+            instr = document->getStudio().getInstrumentById(track->getInstrument());
+            if (instr) {
+                if (!instr->getKeyMapping()) {
+                    m_onlyKeyMapping = false;
+                }
             }
         }
+        // Note : m_onlyKeyMapping, whose value is defined above,
+        // must be set before calling m_scene->setSegments()
     }
-    // Note : m_onlyKeyMapping, whose value is defined above,
-    // must be set before calling m_scene->setSegments()
 
     delete m_scene;
     m_scene = new MatrixScene();
@@ -545,6 +555,7 @@ MatrixWidget::generatePitchRuler()
             isPercussion = false;
         }
     }
+
     if (mapping && !m_localMapping->getMap().empty()) {
         m_pitchRuler = new PercussionPitchRuler(nullptr, m_localMapping,
                                                 m_scene->getYResolution());

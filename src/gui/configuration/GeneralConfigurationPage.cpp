@@ -365,6 +365,23 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 
     ++row;
 
+    // force key mapping
+    layout->addWidget(
+            new QLabel(tr("Use note names instead of piano keys in Matrix")),
+            row, 0);
+
+    settings.endGroup();
+    settings.beginGroup(MatrixViewConfigGroup);
+    m_forceKeyMapping = new QCheckBox;
+    m_forceKeyMapping->setChecked(
+            settings.value("force_key_mapping", false).toBool());
+    connect(m_forceKeyMapping, &QCheckBox::stateChanged,
+            this, &GeneralConfigurationPage::slotModified);
+    layout->addWidget(m_forceKeyMapping, row, 1);
+    settings.endGroup();
+    ++row;
+
+    settings.beginGroup(GeneralOptionsConfigGroup);
     // Make the last row stretch to fill the rest of the space.
     layout->setRowStretch(row, 10);
 
@@ -527,6 +544,11 @@ void GeneralConfigurationPage::apply()
             (settings.value("track_size", 0).toInt() !=
              m_trackSize->currentIndex());
     settings.setValue("track_size", m_trackSize->currentIndex());
+    settings.endGroup();
+
+    // Matrix View inside Presentation tab
+    settings.beginGroup(MatrixViewConfigGroup);
+    settings.setValue("force_key_mapping", m_forceKeyMapping->isChecked());
     settings.endGroup();
 
     // External Applications tab

@@ -145,16 +145,6 @@ void PianoKeyboard::paintEvent(QPaintEvent*)
     // White Key Labels
 
     paint.setFont(*pFont);
-    RG_DEBUG << " size w=" << m_whiteKeyPos.size() << " b=" <<  m_blackKeyPos.size() << " a=" << m_allKeyPos.size() <<  " \n";
-    for (unsigned int i = 0; i < 128; ++i) {
-        int pitch = 127 - i;
-        MidiPitchLabel label(pitch);
-        paint.drawText(30, m_allKeyPos[i],
-                       label.getQString());
-        //RG_DEBUG << i << " " << label.getQString() << " \n";
-    }
-
-
     for (unsigned int i = 0; i < m_labelKeyPos.size(); ++i) {
         int pitch = (m_labelKeyPos.size() - i) * 12;
         // for some reason I don't immediately comprehend,

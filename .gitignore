@@ -15,6 +15,7 @@ rosegarden
 *.moc
 *.o
 *.qm
+*.autosave
 target
 #src/gui/dialogs/RosegardenTransportUi.h
 #src/gui/studio/DeviceManagerDialogUi.h
