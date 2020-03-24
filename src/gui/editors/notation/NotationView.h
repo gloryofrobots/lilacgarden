@@ -523,7 +523,6 @@ private:
     QString          m_fontName;
     int              m_fontSize;
 
-    bool m_Thorn;
 
     std::vector<QString> m_availableFontNames;
     std::vector<int>     m_availableFontSizes;

@@ -349,7 +349,6 @@ set(rg_CPPS
   gui/general/PresetHandlerDialog.cpp
   gui/general/BaseToolBox.cpp
   gui/general/CategoryElement.cpp
-  gui/general/ThornStyle.cpp
   gui/general/ProjectPackager.cpp
   gui/general/FileSource.cpp
   gui/general/EditTempoController.cpp

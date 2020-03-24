@@ -75,7 +75,6 @@
 
 #include "gui/rulers/ControlRulerWidget.h"
 
-#include "gui/general/ThornStyle.h"
 
 #include "base/Quantizer.h"
 #include "base/BasicQuantizer.h"
@@ -146,7 +145,6 @@ MatrixView::MatrixView(RosegardenDocument *doc,
      
     findToolbar("General Toolbar");
 
-    m_Thorn = ThornStyle::isEnabled();
 
     initActionsToolbar();
     initRulersToolbar();

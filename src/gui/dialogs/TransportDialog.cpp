@@ -24,7 +24,6 @@
 #include "base/Profiler.h"
 #include "misc/Debug.h"
 #include "misc/Strings.h"
-#include "gui/general/ThornStyle.h"
 #include "sequencer/RosegardenSequencer.h"
 #include "gui/application/TransportStatus.h"
 #include "gui/application/RosegardenApplication.h"

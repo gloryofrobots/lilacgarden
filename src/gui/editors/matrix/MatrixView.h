@@ -279,7 +279,6 @@ private:
     void initRulersToolbar();
 
     bool m_drumMode;
-    bool m_Thorn;
     bool m_inChordMode;
 
     int getPitchFromNoteInsertAction(QString name,

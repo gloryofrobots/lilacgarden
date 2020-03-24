@@ -30,7 +30,6 @@
 
 #include "misc/Debug.h"
 #include "misc/ConfigGroups.h"
-#include "gui/general/ThornStyle.h"
 
 namespace Rosegarden
 {
@@ -95,24 +94,24 @@ FileDialog::getOpenFileName(QWidget *parent,
                             QString *selectedFilter,
                             QFileDialog::Options options)
 {
-    if (!ThornStyle::isEnabled()) {
+//    if (!ThornStyle::isEnabled()) {
         return QFileDialog::getOpenFileName(parent, caption, dir, filter,
                                             selectedFilter, options);
-    }
+//    }
 
-    FileDialog dialog(parent, caption, dir, filter, options);
+//    FileDialog dialog(parent, caption, dir, filter, options);
 
-    // (code borrowed straight out of Qt 4.5.0 Copyright 2009 Nokia)
-    if (selectedFilter)
-        dialog.selectNameFilter(*selectedFilter);
+//    // (code borrowed straight out of Qt 4.5.0 Copyright 2009 Nokia)
+//    if (selectedFilter)
+//        dialog.selectNameFilter(*selectedFilter);
 
-    if (dialog.exec() == QDialog::Accepted) {
-        if (selectedFilter)
-            *selectedFilter = dialog.selectedNameFilter();
-        return dialog.selectedFiles().value(0);
-    }
+//    if (dialog.exec() == QDialog::Accepted) {
+//        if (selectedFilter)
+//            *selectedFilter = dialog.selectedNameFilter();
+//        return dialog.selectedFiles().value(0);
+//    }
 
-    return QString();
+//    return QString();
 }
 
 
@@ -124,24 +123,24 @@ FileDialog::getOpenFileNames(QWidget *parent,
                              QString *selectedFilter,
                              QFileDialog::Options options)
 {
-    if (!ThornStyle::isEnabled()) {
+//    if (!ThornStyle::isEnabled()) {
         return QFileDialog::getOpenFileNames(parent, caption, dir, filter,
                                              selectedFilter, options);
-    }
+//    }
 
-    FileDialog dialog(parent, caption, dir, filter, options);
+//    FileDialog dialog(parent, caption, dir, filter, options);
 
-    // (code borrowed straight out of Qt 4.5.0 Copyright 2009 Nokia)
-    if (selectedFilter)
-        dialog.selectNameFilter(*selectedFilter);
+//    // (code borrowed straight out of Qt 4.5.0 Copyright 2009 Nokia)
+//    if (selectedFilter)
+//        dialog.selectNameFilter(*selectedFilter);
 
-    if (dialog.exec() == QDialog::Accepted) {
-        if (selectedFilter)
-            *selectedFilter = dialog.selectedNameFilter();
-        return dialog.selectedFiles();
-    }
+//    if (dialog.exec() == QDialog::Accepted) {
+//        if (selectedFilter)
+//            *selectedFilter = dialog.selectedNameFilter();
+//        return dialog.selectedFiles();
+//    }
 
-    return QStringList();
+//    return QStringList();
 }
 
 
@@ -154,27 +153,27 @@ FileDialog::getSaveFileName(QWidget *parent,
                             QString *selectedFilter,
                             QFileDialog::Options options)
 {
-    if (!ThornStyle::isEnabled()) {
+//    if (!ThornStyle::isEnabled()) {
         return QFileDialog::getSaveFileName(parent, caption, dir, filter,
                                             selectedFilter, options);
-    }
+//    }
 
-    FileDialog dialog(parent, caption, dir, filter, options);
+//    FileDialog dialog(parent, caption, dir, filter, options);
 
-    dialog.selectFile(defaultName);
+//    dialog.selectFile(defaultName);
 
-    // (code borrowed straight out of Qt 4.5.0 Copyright 2009 Nokia)
-    dialog.setAcceptMode(QFileDialog::AcceptSave);
-    if (selectedFilter)
-        dialog.selectNameFilter(*selectedFilter);
+//    // (code borrowed straight out of Qt 4.5.0 Copyright 2009 Nokia)
+//    dialog.setAcceptMode(QFileDialog::AcceptSave);
+//    if (selectedFilter)
+//        dialog.selectNameFilter(*selectedFilter);
 
-    if (dialog.exec() == QDialog::Accepted) {
-        if (selectedFilter)
-            *selectedFilter = dialog.selectedNameFilter();
-        return dialog.selectedFiles().value(0);
-    }
+//    if (dialog.exec() == QDialog::Accepted) {
+//        if (selectedFilter)
+//            *selectedFilter = dialog.selectedNameFilter();
+//        return dialog.selectedFiles().value(0);
+//    }
 
-    return QString();
+//    return QString();
 }
 
 QString
@@ -182,19 +181,19 @@ FileDialog::getExistingDirectory(QWidget *parent,
                                  const QString &caption,
                                  const QString &dir)
 {
-    if (!ThornStyle::isEnabled()) {
+//    if (!ThornStyle::isEnabled()) {
         return QFileDialog::getExistingDirectory(parent, caption, dir, QFileDialog::ShowDirsOnly);
-    }
+//    }
 
-    // (code adapted from Qt 4 Git repository (c) 2012 Digia)
-    FileDialog dialog(parent, caption, dir);
-    dialog.setFileMode(QFileDialog::Directory);
-    dialog.setOption(QFileDialog::ShowDirsOnly, true);
+//    // (code adapted from Qt 4 Git repository (c) 2012 Digia)
+//    FileDialog dialog(parent, caption, dir);
+//    dialog.setFileMode(QFileDialog::Directory);
+//    dialog.setOption(QFileDialog::ShowDirsOnly, true);
 
-    if (dialog.exec() == QDialog::Accepted) {
-        return dialog.selectedFiles().value(0);
-    }
-    return QString();    
+//    if (dialog.exec() == QDialog::Accepted) {
+//        return dialog.selectedFiles().value(0);
+//    }
+//    return QString();
 }
 
 }

@@ -17,7 +17,6 @@
 
 #include "FontRequester.h"
 #include "misc/ConfigGroups.h"
-#include "gui/general/ThornStyle.h"
 
 #include <QLabel>
 #include <QPushButton>
@@ -37,13 +36,6 @@ FontRequester::FontRequester(QWidget *parent) :
     m_label->setFrameStyle(QFrame::Panel | QFrame::Sunken);
     m_label->setLineWidth(2);
     layout->addWidget(m_label, 0, 0);
-
-    if (ThornStyle::isEnabled()) {
-        QPalette pal = m_label->palette();
-        pal.setColor(QPalette::Window, Qt::white);
-        pal.setColor(QPalette::WindowText, Qt::black);
-        m_label->setPalette(pal);
-    }
 
     QPushButton *button = new QPushButton(tr("Choose..."));
     layout->addWidget(button, 0, 1);

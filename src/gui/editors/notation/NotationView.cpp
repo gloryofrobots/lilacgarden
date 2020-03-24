@@ -138,7 +138,6 @@
 #include "gui/general/LilyPondProcessor.h"
 #include "gui/general/PresetHandlerDialog.h"
 #include "gui/general/ClefIndex.h"
-#include "gui/general/ThornStyle.h"
 #include "gui/rulers/ControlRulerWidget.h"
 #include "gui/widgets/TmpStatusMsg.h"
 
@@ -248,7 +247,6 @@ NotationView::NotationView(RosegardenDocument *doc,
     bool visible;
     QSettings settings;
 
-    m_Thorn = ThornStyle::isEnabled();
 
     settings.beginGroup(NotationViewConfigGroup);
 

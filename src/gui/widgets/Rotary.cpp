@@ -24,7 +24,6 @@
 #include "base/Profiler.h"
 #include "gui/dialogs/FloatEdit.h"
 #include "gui/general/GUIPalette.h"
-#include "gui/general/ThornStyle.h"
 #include "TextFloat.h"
 
 #include <QApplication>
@@ -264,7 +263,7 @@ Rotary::paintEvent(QPaintEvent *)
     int scale = 4;
     int width = m_size * scale;
     QPixmap map(width, width);
-    QColor bg = ThornStyle::isEnabled() ? QColor::fromRgb(0x40, 0x40, 0x40) : palette().window().color();
+    QColor bg = palette().window().color();
     map.fill(bg);
     paint.begin(&map);
 

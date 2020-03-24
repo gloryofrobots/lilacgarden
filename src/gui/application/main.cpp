@@ -23,7 +23,6 @@
 #include "gui/widgets/StartupLogo.h"
 #include "gui/general/ResourceFinder.h"
 #include "gui/general/IconLoader.h"
-#include "gui/general/ThornStyle.h"
 #include "gui/application/RosegardenApplication.h"
 #include "base/RealTime.h"
 
@@ -430,21 +429,6 @@ int main(int argc, char *argv[])
     theApp.setApplicationName(QObject::tr("Rosegarden"));
 
     QSettings settings;
-    settings.beginGroup(GeneralOptionsConfigGroup);
-    bool Thorn = settings.value("use_thorn_style", true).toBool();
-
-    // If the option was turned on in settings, but the user has specified a
-    // style on the command line (obnoxious user!) then we must turn this option
-    // _off_ in settings as though the user had un-checked it on the config
-    // page, or else mayhem and chaos will reign.
-    if (Thorn && styleSpecified) {
-        settings.setValue("use_thorn_style", false);
-        Thorn = false;
-    }
-
-    settings.endGroup();
-
-    ThornStyle::setEnabled(Thorn);
 
     // This allows icons to appear in the instrument popup menu in
     // TrackButtons.

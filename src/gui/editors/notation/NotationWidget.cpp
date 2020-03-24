@@ -59,7 +59,6 @@
 #include "gui/widgets/Thumbwheel.h"
 
 #include "gui/general/IconLoader.h"
-#include "gui/general/ThornStyle.h"
 
 #include "gui/rulers/ControlRulerWidget.h"
 #include "gui/rulers/StandardRuler.h"
@@ -506,8 +505,8 @@ NotationWidget::setSegments(RosegardenDocument *document,
     m_tempoRuler = new TempoRuler(m_referenceScale,
                                   document,
                                   24,     // height
-                                  true,   // small
-                                  ThornStyle::isEnabled());
+                                  true   // small
+                                 );
 
     m_chordNameRuler = new ChordNameRuler(m_referenceScale,
                                           document,

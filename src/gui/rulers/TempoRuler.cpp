@@ -61,8 +61,7 @@ namespace Rosegarden
 TempoRuler::TempoRuler(RulerScale *rulerScale,
                        RosegardenDocument *doc,
                        int height,
-                       bool small,
-                       bool Thorn) :
+                       bool small) :
         QWidget(nullptr),
         m_height(height),
         m_currentXOffset(0),
@@ -87,8 +86,7 @@ TempoRuler::TempoRuler(RulerScale *rulerScale,
         m_rulerScale(rulerScale),
         m_menu(nullptr),
         m_editTempoController(EditTempoController::self()),
-        m_fontMetrics(m_boldFont),
-        m_Thorn(Thorn)
+        m_fontMetrics(m_boldFont)
 {
     m_font.setPixelSize(m_height / 3);
     m_boldFont.setPixelSize(m_height * 2 / 5);
@@ -590,7 +588,7 @@ TempoRuler::paintEvent(QPaintEvent* e)
     // using Thorn, use a nice dark gray that just contrasts with the black
     // horizontal line here
     QColor kuller(0x40, 0x40, 0x40);
-    if (!m_Thorn) kuller = palette().background().color();
+    kuller = palette().background().color();
     m_buffer.fill(kuller);
 
     QPainter paint(&m_buffer);

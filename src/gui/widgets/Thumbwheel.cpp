@@ -22,7 +22,6 @@
 #include "base/Profiler.h"
 #include "misc/ConfigGroups.h"
 #include "misc/Debug.h"
-#include "gui/general/ThornStyle.h"
 
 #include <QMouseEvent>
 #include <QPaintEvent>
@@ -353,7 +352,7 @@ Thumbwheel::paintEvent(QPaintEvent *)
 
     QPainter paint(&m_cache);
     paint.setClipRect(rect());
-    QColor bg = (ThornStyle::isEnabled() ? QColor(0xED, 0xED, 0xFF) : palette().background().color());
+    QColor bg = palette().background().color();
     if (!m_bright) bg = bg.darker(125);
     paint.fillRect(subclip, bg);
 
@@ -430,7 +429,7 @@ Thumbwheel::paintEvent(QPaintEvent *)
         int grey = lrintf(120 * depth);
 
         QColor fc = QColor(grey, grey, grey);
-        QColor oc = (ThornStyle::isEnabled() ? QColor(0xAA, 0xAA, 0xFF) : palette().highlight().color());
+        QColor oc = palette().highlight().color();
         if (m_useRed) oc = Qt::red;
         if (!m_bright) oc = oc.darker(125);
 
@@ -457,7 +456,6 @@ Thumbwheel::paintEvent(QPaintEvent *)
         }
 
         paint.setPen(fc);
-        // calculated above, takes Thorn state into account
         paint.setBrush(bg);
 
         if (m_orientation == Qt::Horizontal) {

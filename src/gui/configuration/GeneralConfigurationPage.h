@@ -108,8 +108,6 @@ private:
     QCheckBox *m_useJackTransport;
 
     // Presentation tab
-    QCheckBox *m_Thorn;
-    QComboBox *m_nameStyle;
     QCheckBox *m_backgroundTextures;
     QCheckBox *m_notationBackgroundTextures;
     QCheckBox *m_longTitles;

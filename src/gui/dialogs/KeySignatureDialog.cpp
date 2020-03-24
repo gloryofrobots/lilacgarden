@@ -23,7 +23,6 @@
 #include "base/NotationTypes.h"
 #include "gui/editors/notation/NotePixmapFactory.h"
 #include "gui/widgets/BigArrowButton.h"
-#include "gui/general/ThornStyle.h"
 
 #include "misc/ConfigGroups.h"
 
@@ -377,9 +376,7 @@ void
 KeySignatureDialog::redrawKeyPixmap()
 {
     if (m_valid) {
-        NotePixmapFactory::ColourType ct =
-                ThornStyle::isEnabled() ? NotePixmapFactory::PlainColourLight
-                                        : NotePixmapFactory::PlainColour;
+        NotePixmapFactory::ColourType ct = NotePixmapFactory::PlainColour;
         m_notePixmapFactory->setSelected(false);
         m_notePixmapFactory->setShaded(false);
         QPixmap pmap = m_notePixmapFactory->makeKeyDisplayPixmap(m_key, m_clef, ct);

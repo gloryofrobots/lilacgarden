@@ -278,37 +278,6 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 
     row = 0;
 
-    // Use Thorn style
-    label = new QLabel(tr("Use Thorn style"), frame);
-    tipText = tr("<qt>When checked, Rosegarden will use the Thorn look and feel, otherwise default system preferences will be used the next time Rosegarden starts.</qt>");
-    label->setToolTip(tipText);
-    layout->addWidget(label, row, 0);
-
-    m_Thorn = new QCheckBox;
-    m_Thorn->setToolTip(tipText);
-    m_Thorn->setChecked(settings.value("use_thorn_style", true).toBool());
-    connect(m_Thorn, &QCheckBox::stateChanged,
-            this, &GeneralConfigurationPage::slotModified);
-    layout->addWidget(m_Thorn, row, 1, 1, 3);
-
-    ++row;
-
-    // Note name style
-    layout->addWidget(new QLabel(tr("Note name style"),
-                                 frame), row, 0);
-
-    m_nameStyle = new QComboBox(frame);
-    m_nameStyle->addItem(tr("Always use US names (e.g. quarter, 8th)"));
-    m_nameStyle->addItem(tr("Localized (where available)"));
-    m_nameStyle->setCurrentIndex(
-            settings.value("notenamestyle", Local).toUInt());
-    connect(m_nameStyle, static_cast<void(QComboBox::*)(int)>(
-            &QComboBox::activated),
-        this, &GeneralConfigurationPage::slotModified);
-    layout->addWidget(m_nameStyle, row, 1, 1, 3);
-
-    ++row;
-
     // Show textured background on
     layout->addWidget(
             new QLabel(tr("Show textured background on"), frame), row, 0);
@@ -521,12 +490,6 @@ void GeneralConfigurationPage::apply()
 
     settings.beginGroup(GeneralOptionsConfigGroup);
 
-    const bool thornChanged =
-            (settings.value("use_thorn_style", true).toBool() !=
-             m_Thorn->isChecked());
-    //RG_DEBUG << "apply(): NB. use_thorn_style = " << settings.value("use_thorn_style", true).toBool() << ", m_Thorn->isChecked() = " << m_Thorn->isChecked();
-    settings.setValue("use_thorn_style", m_Thorn->isChecked());
-    settings.setValue("notenamestyle", m_nameStyle->currentIndex());
     const bool mainTextureChanged =
             (settings.value("backgroundtextures", true).toBool() !=
              m_backgroundTextures->isChecked());
@@ -565,11 +528,6 @@ void GeneralConfigurationPage::apply()
     if (mainTextureChanged) {
         QMessageBox::information(this, tr("Rosegarden"),
                 tr("Changes to the textured background in the main window will not take effect until you restart Rosegarden."));
-    }
-
-    if (thornChanged) {
-        QMessageBox::information(this, tr("Rosegarden"),
-                tr("You must restart Rosegarden for the presentation change to take effect."));
     }
 
     if (trackSizeChanged) {

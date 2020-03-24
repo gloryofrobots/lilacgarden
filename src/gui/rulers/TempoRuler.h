@@ -65,8 +65,7 @@ public:
     TempoRuler(RulerScale *rulerScale,
                RosegardenDocument *doc,
                int height = 0,
-               bool small = false,
-               bool Thorn = true);
+               bool small = false);
 
     ~TempoRuler() override;
 
@@ -144,8 +143,6 @@ private:
     QFont        m_boldFont;
     QFontMetrics m_fontMetrics;
     QPixmap      m_buffer;
-
-    bool m_Thorn;
 };
 
 

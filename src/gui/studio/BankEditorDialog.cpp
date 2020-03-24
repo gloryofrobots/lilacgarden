@@ -41,7 +41,6 @@
 #include "gui/widgets/TmpStatusMsg.h"
 #include "gui/widgets/FileDialog.h"
 #include "gui/general/ResourceFinder.h"
-#include "gui/general/ThornStyle.h"
 #include "gui/dialogs/AboutDialog.h"
 #include "document/Command.h"
 

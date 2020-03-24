@@ -50,8 +50,6 @@
 #include "gui/rulers/ChordNameRuler.h"
 #include "gui/rulers/LoopRuler.h"
 
-#include "gui/general/ThornStyle.h"
-
 #include "gui/studio/StudioControl.h"
 
 #include "misc/Debug.h"
@@ -473,8 +471,8 @@ MatrixWidget::setSegments(RosegardenDocument *document,
     m_tempoRuler = new TempoRuler(m_referenceScale,
                                   document,
                                   24,     // height
-                                  true,   // small
-                                  ThornStyle::isEnabled());
+                                  true
+                                 );   // small
 
     m_chordNameRuler = new ChordNameRuler(m_referenceScale,
                                           document,

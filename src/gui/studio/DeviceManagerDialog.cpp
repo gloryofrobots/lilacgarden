@@ -37,7 +37,6 @@
 #include "document/RosegardenDocument.h"
 #include "sequencer/RosegardenSequencer.h"
 #include "gui/general/IconLoader.h"
-#include "gui/general/ThornStyle.h"
 
 #include <QWidget>
 #include <QMainWindow>
@@ -747,12 +746,6 @@ DeviceManagerDialog::updatePortsList(QTreeWidget * treeWid,
                                         QStringList() << portName);
 
             //twItem->setCheckState( 0, Qt::Unchecked );
-
-            if (ThornStyle::isEnabled()) {
-                twItem->setBackground(0, bgBrush);
-                twItem->setBackground(1, bgBrush);
-            }
-
             treeWid->addTopLevelItem(twItem);
         }
 
