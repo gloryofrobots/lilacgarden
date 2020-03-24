@@ -122,15 +122,6 @@ CompositionView::CompositionView(RosegardenDocument *doc,
 
     QSettings settings;
 
-    // If background textures are enabled, load the texture pixmap.
-    if (settings.value(
-            QString(GeneralOptionsConfigGroup) + "/backgroundtextures",
-            "true").toBool()) {
-
-        IconLoader il;
-        m_backgroundPixmap = il.loadPixmap("bg-segmentcanvas");
-    }
-
     slotUpdateSize();
 
     // *** Connections

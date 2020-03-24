@@ -278,32 +278,6 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 
     row = 0;
 
-    // Show textured background on
-    layout->addWidget(
-            new QLabel(tr("Show textured background on"), frame), row, 0);
-
-    m_backgroundTextures = new QCheckBox(tr("Main window"), frame);
-    m_backgroundTextures->setChecked(
-            settings.value("backgroundtextures", true).toBool());
-    connect(m_backgroundTextures, &QCheckBox::stateChanged,
-            this, &GeneralConfigurationPage::slotModified);
-    layout->addWidget(m_backgroundTextures, row, 1);
-
-    m_notationBackgroundTextures = new QCheckBox(tr("Notation"), frame);
-    // ??? Wow this is cumbersome.  Maybe we should just prepend the
-    //     group for each call?
-    settings.endGroup();
-    settings.beginGroup(NotationViewConfigGroup);
-    m_notationBackgroundTextures->setChecked(
-            settings.value("backgroundtextures", true).toBool());
-    settings.endGroup();
-    settings.beginGroup(GeneralOptionsConfigGroup);
-    connect(m_notationBackgroundTextures, &QCheckBox::stateChanged,
-            this, &GeneralConfigurationPage::slotModified);
-    layout->addWidget(m_notationBackgroundTextures, row, 2);
-
-    ++row;
-
     // Show full path in window titles
     layout->addWidget(
             new QLabel(tr("Show full path in window titles")),
@@ -489,19 +463,6 @@ void GeneralConfigurationPage::apply()
     // Presentation tab
 
     settings.beginGroup(GeneralOptionsConfigGroup);
-
-    const bool mainTextureChanged =
-            (settings.value("backgroundtextures", true).toBool() !=
-             m_backgroundTextures->isChecked());
-    settings.setValue("backgroundtextures", m_backgroundTextures->isChecked());
-
-    settings.endGroup();
-
-    settings.beginGroup(NotationViewConfigGroup);
-    settings.setValue("backgroundtextures", m_notationBackgroundTextures->isChecked());
-    settings.endGroup();
-
-    settings.beginGroup(GeneralOptionsConfigGroup);
     settings.setValue("long_window_titles", m_longTitles->isChecked());
     const bool trackSizeChanged =
             (settings.value("track_size", 0).toInt() !=
@@ -524,12 +485,6 @@ void GeneralConfigurationPage::apply()
     settings.endGroup();
 
     // Restart Warnings
-
-    if (mainTextureChanged) {
-        QMessageBox::information(this, tr("Rosegarden"),
-                tr("Changes to the textured background in the main window will not take effect until you restart Rosegarden."));
-    }
-
     if (trackSizeChanged) {
         QMessageBox::information(this, tr("Rosegarden"),
                 tr("You must restart Rosegarden or open a file for the track size change to take effect."));

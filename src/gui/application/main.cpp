@@ -412,14 +412,6 @@ int main(int argc, char *argv[])
 
     srandom((unsigned int)time(nullptr) * (unsigned int)getpid());
 
-    bool styleSpecified = false;
-    for (int i = 1; i < argc; ++i) {
-        if (!strcmp(argv[i], "-style")) {
-            styleSpecified = true;
-            break;
-        }
-    }
-
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     RosegardenApplication theApp(argc, argv);

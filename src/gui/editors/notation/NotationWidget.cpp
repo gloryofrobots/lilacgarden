@@ -141,16 +141,9 @@ NotationWidget::NotationWidget() :
                            QPainter::TextAntialiasing |
                            QPainter::SmoothPixmapTransform);
 
-    bool texture = false;
     QSettings settings;
-    settings.beginGroup(NotationViewConfigGroup);
-    texture = settings.value("backgroundtextures", true).toBool();
-    settings.endGroup();
+    QBrush bg = Qt::white;
 
-    QBrush bg = (texture ?
-                QBrush(IconLoader().loadPixmap("bg-paper-grey"))
-                :
-                Qt::white);
     m_view->setBackgroundBrush(bg);
     m_layout->addWidget(m_view, PANNED_ROW, MAIN_COL, 1, 1);
 
