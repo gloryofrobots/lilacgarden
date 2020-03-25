@@ -34,6 +34,7 @@
 #include "document/CommandHistory.h"
 #include "gui/general/RosegardenScrollView.h"
 #include "SegmentPencil.h"
+#include "SegmentEraser.h"
 #include "SegmentResizer.h"
 #include "SegmentToolBox.h"
 
@@ -181,6 +182,18 @@ SegmentSelector::mousePressEvent(QMouseEvent *e)
 
     // if a segment was clicked
     if (item) {
+        if (ctrl) {
+            // * Delete Segment
+            m_dispatchTool = m_canvas->getToolBox()->getTool(
+                    SegmentEraser::ToolName());
+
+            if (m_dispatchTool) {
+                m_dispatchTool->ready(); // set mouse cursor
+                m_dispatchTool->mousePressEvent(e);
+            }
+
+            return;
+        }
 
         // * Move
 
@@ -213,7 +226,6 @@ SegmentSelector::mousePressEvent(QMouseEvent *e)
 
     } else {  // the background was clicked
         if (ctrl) {
-
             // * Create Segment
 
             m_dispatchTool = m_canvas->getToolBox()->getTool(

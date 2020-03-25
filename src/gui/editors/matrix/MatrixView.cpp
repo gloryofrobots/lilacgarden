@@ -168,12 +168,8 @@ MatrixView::MatrixView(RosegardenDocument *doc,
     // Toggle the desired tool off and then trigger it on again, to
     // make sure its signal is called at least once (as would not
     // happen if the tool was on by default otherwise)
-    QAction *toolAction = nullptr;
-    if (!m_matrixWidget->segmentsContainNotes()) {
-        toolAction = findAction("draw");
-    } else {
-        toolAction = findAction("select");
-    }
+    QAction *toolAction = findAction("select");
+
     if (toolAction) {
         MATRIX_DEBUG << "initial state for action '" << toolAction->objectName() << "' is " << toolAction->isChecked();
         if (toolAction->isChecked()) toolAction->toggle();

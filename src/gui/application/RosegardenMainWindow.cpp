@@ -1081,14 +1081,9 @@ RosegardenMainWindow::initView()
     QAction *actionx = this->findAction(QString("move"));
     actionx->trigger();
     
-    if (m_doc->getComposition().getNbSegments() > 0){
-        QAction *actionx = this->findAction(QString("select"));
-        actionx->trigger();
-    } else {
-        QAction *actionx = this->findAction(QString("draw"));
-        actionx->trigger();
-    }
-    
+    actionx = this->findAction(QString("select"));
+    actionx->trigger();
+
     int zoomLevel = m_doc->getConfiguration().get<Int>(DocumentConfiguration::ZoomLevel);
     m_zoomSlider->setSize(double(zoomLevel) / 1000.0);
     slotChangeZoom(zoomLevel);
