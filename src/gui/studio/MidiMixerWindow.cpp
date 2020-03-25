@@ -33,7 +33,6 @@
 #include "base/MidiProgram.h"
 #include "base/Studio.h"
 #include "document/RosegardenDocument.h"
-#include "gui/editors/notation/NotePixmapFactory.h"
 #include "gui/widgets/Fader.h"
 #include "gui/widgets/Rotary.h"
 #include "gui/widgets/VUMeter.h"

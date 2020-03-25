@@ -102,7 +102,6 @@ VelocityColour::getColour(int value)
             ( m_hiStartBlue + m_hiStepBlue * mixFactor ) / m_multiplyFactor);
     } else {
         return m_loudColour;
-        return m_loudColour;
     }
 
     return m_mixedColour;

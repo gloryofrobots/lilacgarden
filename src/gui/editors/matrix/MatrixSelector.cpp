@@ -33,6 +33,7 @@
 #include "MatrixElement.h"
 #include "MatrixMover.h"
 #include "MatrixPainter.h"
+#include "MatrixEraser.h"
 #include "MatrixResizer.h"
 #include "MatrixViewSegment.h"
 #include "MatrixTool.h"
@@ -154,7 +155,7 @@ MatrixSelector::handleLeftButtonPress(const MatrixMouseEvent *e)
 
     } else if (e->modifiers & Qt::ControlModifier) {
 
-        handleMidButtonPress(e);
+        handleRightButtonPress(e);
         return;
 
     } else {
@@ -188,25 +189,29 @@ MatrixSelector::handleLeftButtonPress(const MatrixMouseEvent *e)
     }
 }
 
-void
-MatrixSelector::handleMidButtonPress(const MatrixMouseEvent *e)
+void MatrixSelector::handleRightButtonPress(const MatrixMouseEvent * e)
 {
-    // Middle button press draws a new event via MatrixPainter.
+    // Right button press draws a new event via MatrixPainter.
+    // or deletes event via MatrixEraser
 
     m_clickedElement = nullptr; // should be used for left-button clicks only
     m_event = nullptr;
 
-    // Don't allow overlapping elements on the same channel
-    if (e->element) return;
-
-    m_dispatchTool =
-        dynamic_cast<MatrixTool *>
-        (m_widget->getToolBox()->getTool(MatrixPainter::ToolName()));
+    if(e->element){
+        m_dispatchTool =
+            dynamic_cast<MatrixTool *>
+            (m_widget->getToolBox()->getTool(MatrixEraser::ToolName()));
+    } else {
+        m_dispatchTool =
+            dynamic_cast<MatrixTool *>
+            (m_widget->getToolBox()->getTool(MatrixPainter::ToolName()));
+    }
 
     if (!m_dispatchTool) return;
 
     m_dispatchTool->ready();
     m_dispatchTool->handleLeftButtonPress(e);
+//    MatrixTool::handleRightButtonPress(e);
 }
 
 void
@@ -309,6 +314,11 @@ MatrixSelector::handleMouseTripleClick(const MatrixMouseEvent *e)
         m_updateRect = false;
 */
     }
+}
+
+void MatrixSelector::handleMidButtonPress(const MatrixMouseEvent *)
+{
+
 }
 
 FollowMode
@@ -416,7 +426,7 @@ MatrixSelector::ready()
             this, SLOT(slotMatrixScrolled(int, int)));
 */
     setContextHelp
-        (tr("Click and drag to select; middle-click and drag to draw new note"));
+        (tr("Click and drag to select; right-click and drag to draw new note"));
 }
 
 void
@@ -558,7 +568,7 @@ MatrixSelector::setContextHelpFor(const MatrixMouseEvent *e, bool ctrlPressed)
     if (!element) {
         
         setContextHelp
-            (tr("Click and drag to select; middle-click and drag to draw new note"));
+            (tr("Click and drag to select; right-click and drag to draw new note"));
 
     } else {
         

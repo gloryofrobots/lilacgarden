@@ -29,7 +29,8 @@ namespace Rosegarden
 {
 
 
-const QColor GUIPalette::SelectionColor = QColor(0, 54, 232);
+//const QColor GUIPalette::SelectionColor = QColor(0, 54, 232);
+const QColor GUIPalette::SelectionColor = QColor(0, 54, 100);
 const QColor GUIPalette::PreviewColor = Qt::darkGreen;
 const QColor GUIPalette::OutRangeColor = Qt::red;
 
@@ -117,9 +118,13 @@ GUIPalette::GUIPalette()
     m_defaultsMap[RawNoteRulerBackground] = QColor(240, 240, 240);
     m_defaultsMap[RawNoteRulerForeground] = QColor(Qt::black);
 
-    m_defaultsMap[LevelMeterGreen] = QColor(0, 200, 0);
-    m_defaultsMap[LevelMeterOrange] = QColor(255, 165, 0);
-    m_defaultsMap[LevelMeterRed] = QColor(200, 0, 0);
+//    m_defaultsMap[LevelMeterGreen] = QColor(0, 200, 0);
+//    m_defaultsMap[LevelMeterOrange] = QColor(255, 165, 0);
+//    m_defaultsMap[LevelMeterRed] = QColor(200, 0, 0);
+
+    m_defaultsMap[LevelMeterGreen] = QColor(0, 255, 217);
+    m_defaultsMap[LevelMeterOrange] = QColor(0, 170, 255);
+    m_defaultsMap[LevelMeterRed] = QColor(140, 0, 255);
 
     //    m_defaultsMap[LevelMeterSolidGreen] = QColor(0, 140, 0);
     m_defaultsMap[LevelMeterSolidGreen] = QColor(84, 177, 248); // blue!

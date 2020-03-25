@@ -43,11 +43,13 @@ class MatrixSelector : public MatrixTool
 
 public:
     void handleLeftButtonPress(const MatrixMouseEvent *) override;
-    void handleMidButtonPress(const MatrixMouseEvent *) override;
+
+    void handleRightButtonPress(const MatrixMouseEvent *) override;
     FollowMode handleMouseMove(const MatrixMouseEvent *) override;
     void handleMouseRelease(const MatrixMouseEvent *) override;
     void handleMouseDoubleClick(const MatrixMouseEvent *) override;
     virtual void handleMouseTripleClick(const MatrixMouseEvent *);
+    virtual void handleMidButtonPress(const MatrixMouseEvent *) override;
 
     /**
      * Create the selection rect

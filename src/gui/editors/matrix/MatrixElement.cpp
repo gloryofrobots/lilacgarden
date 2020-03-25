@@ -119,6 +119,7 @@ MatrixElement::reconfigure(timeT time, timeT duration, int pitch, int velocity)
     } else {
         colour = DefaultVelocityColour::getInstance()->getColour(velocity);
     }
+
     colour.setAlpha(160);
 
     double fres(resolution);
